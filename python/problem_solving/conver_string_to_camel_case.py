@@ -1,12 +1,7 @@
 def to_camel_case(text):
-    separators = "-_ "
-    i = 0
-    while i < len(text):
-        char = text[i]
-        if(char in separators):
-            text = text[:i] + text[i+1].upper() + text[i+2:]
-        i+=1
-    return text
+    words = text.replace("_", " ").replace("-", " ").split()
+    return words[0]+"".join([word.capitalize() for word in words[1:]]) if words else ""
+
 
 print(to_camel_case("my name is mohamed") == "myNameIsMohamed")
 print(to_camel_case("the-stealth-warrior") == "theStealthWarrior")
